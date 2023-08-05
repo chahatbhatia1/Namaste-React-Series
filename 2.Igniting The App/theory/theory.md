@@ -5,7 +5,7 @@
 A: NPM is a package manager for the JavaScript programming language maintained by NPM, Inc. NPM is the default package manager for the JavaScript runtime environment Node.js. It consists of a command line client, also called NPM, and an online database of public and paid-for private packages, called the NPM registry.
 
 ## Q: What is `package.json` file?
-A:Every npm package and Node.js project has a package.json file with metadata for a project. The file resides in the root directory of every Node.js package and appears after running the npm init command.
+A:Every npm package and Node.js project has a package.json file with metadata for a project. The file resides in the root directory of every Node.js package and appears after running the `npm init` command.
 The package.json file contains descriptive and functional metadata about a project, such as a name, version, and dependencies. The file provides the npm package manager with various information to help identify the project and handle dependencies.
 
 

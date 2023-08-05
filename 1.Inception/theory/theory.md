@@ -34,7 +34,7 @@ A: The `crossorigin` attribute on a `script` tag specifies that `CORS` is suppor
 
 ## Q: What is difference between `React` and `ReactDOM`?
 A: `React` is a JavaScript library for building User Interfaces whereas `ReactDOM` is also JavaScript library that allows `React to interact with the Browser DOM and render the HTML`.
-The react package contains `React.createElement()`, `React.Component`, `React.Children`, and other helpers related to elements and component classes. You can think of these as the isomorphic or universal helpers that you need to build components. The react-dom package contains `ReactDOM.render()`, and in react-dom/server we have server-side rendering support with `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
+The react package contains `React.createElement()`, `React.Component`, `React.Children`, and other helpers related to elements and component classes. You can think of these as the isomorphic or universal helpers that you need to build components. The `react-dom/client` package contains `ReactDOM.createRoot()` which generates a root object having a `render()` method to render the content on the screen, and in react-dom/server we have server-side rendering support APIs.
 
 
 ## Q: What is difference between `react.development.js` and `react.production.js` files via `CDN`?
@@ -42,17 +42,30 @@ A: `Development` version is an uncompressed version for development whereas `Pro
 The `development` version includes extra warnings about common mistakes, whereas the `production` version includes extra performance optimizations and strips all error messages.
 
 ## Q: What is `async and defer`?
-A: `Async` - The async attribute is a `boolean attribute`. The script is downloaded in `parallel(in the background)` to parsing the HTML, and `executed as soon` as it is available (blocks HTML DOM construction during execution phase). Should not be used in cases when multiple scripts depend on each other for their proper execution. Example, using `React` and `ReactDOM` in another script which are coming up from `CDN`. User `defer` in that case.
+A: `Async` - The async attribute is a `boolean attribute`. The script is downloaded in `parallel(in the background)` to parsing the HTML, and `executed as soon` as it is available (blocks HTML DOM construction during execution phase). Should not be used in cases when multiple scripts depend on each other for their proper execution. Example, using `React` and `ReactDOM` in another script which are coming up from `CDN`. User `defer` in that case. Order of execution is not fixed. 
 ### _Syntax_
 ```sh
 <script src="demo_async.js" async></script>
 ```
 
-`Defer` - The defer attribute is a `boolean attribute`. The script is downloaded in `parallel(in the background)` to parsing the HTML, and `executed after the page` has finished parsing the HTML (when browser finished DOM construction). The `defer attribute` tells the browser to continue parsing the HTML until it finishes and then execute the scripts in the end. Should be used when multiple scripts depend on each other for their proper execution. Example, using one script's API's into another script.
+`Defer` - The defer attribute is a `boolean attribute`. The script is downloaded in `parallel(in the background)` to parsing the HTML, and `executed after the page` has finished parsing the HTML (when browser finished DOM construction) but before `DOMContentLoaded` event. The `defer` attribute tells the browser to continue parsing the HTML until it finishes and then execute the scripts in the end. Should be used when multiple scripts depend on each other for their proper execution. Example, using one script's API's into another script. Scripts executes in the order in which they appear in the document. 
 ### _Syntax_
 ```sh
 <script src="demo_defer.js" defer></script>
 ```
+
+## Q: Difference b/w `DOMContentLoaded` and `load` event?
+A: 
+**DOMContentLoaded :**
+- __Triggering Time__: The `DOMContentLoaded` event is fired by the browser when the entire HTML document has been fully parsed and the DOM tree has been constructed. This means that the event is triggered once the HTML structure is ready, __even before external resources like images and stylesheets finish loading.__
+
+- __Use Case__: This event is commonly used to execute JavaScript code that needs access to and manipulation of the DOM. Since it triggers once the HTML is ready, it's faster than the load event, making it suitable for interactive and dynamic components of the page.
+
+**Load Event :**
+- __Triggering Time__: The `load` event is fired by the browser __when the entire page and all its associated resources (including images, stylesheets, scripts, etc.) have finished loading.__ It's a broader event that signals the completion of the entire page loading process.
+
+- __Use Case__: The load event is often used to execute JavaScript code that depends on all resources being available, like images that need to be displayed or scripts that interact with those resources. It's appropriate for tasks that require the entire page to be loaded.
+
 
 ## Q: What is `createRoot`?
 A: `createRoot` lets you create a root to display React components inside a browser DOM node. After you’ve created a root, you need to call `root.render` to display a React component inside of it. `createRoot` returns an object with two methods: `render` and `unmount`.

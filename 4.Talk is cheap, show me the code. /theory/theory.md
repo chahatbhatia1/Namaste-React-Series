@@ -4,7 +4,7 @@
 ## Q: Is `JSX` mandatory for React?
 A: `JSX` is an Extension Syntax that allows writing HTML like syntax with Javascipt together easily in React and is used to create React elements. These elements are then rendered to the React DOM. Each JSX element is just to make use of React easy and for calling React.createElement(component, props, …children) with less work. So, anything that is done with JSX can also be done with just plain JavaScript. So `JSX` is not mandatory but is used for writing better and clean code instead of writing code using `React.createElement`.
 #### Example of `JSX`
-```
+```jsx
 const sample = <h2>Greetings</h2>;
 ```
 
@@ -28,7 +28,7 @@ The Diffing Algorithm is based on two assumptions:
 
 
 ## Q: What is `React Fiber`?
-A: React Fiber is a concept of ReactJS that is used to render a system faster, smoother and smarter.
+A: React Fiber is a concept of ReactJS that is used to render a system faster, smoother and smarter in cases where animations and user interactions are a key factor.
 The Fiber reconciler, which became the default reconciler for React 16 and above, is a complete rewrite of React’s reconciliation algorithm to solve some long-standing issues in React.
 Because Fiber is asynchronous, React can:
 - Pause, resume, and restart rendering work on components as new updates come in
@@ -38,9 +38,9 @@ Because Fiber is asynchronous, React can:
 
 
 ## Q: Why do we need `keys` in React?
-A: A `key` is a special attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted. In other words, we can say that keys are unique Identifier used to give an identity to the elements in the lists.
+A: A `key` is a special attribute you need to include when creating lists of elements in React. Keys are used in React to uniquely identify which items in the list are changed, updated, or deleted. In other words, we can say that keys are unique Identifier used to give an identity to the elements in the lists to prevent re-rendering the whole list on subsequent updates.
 #### Example
-```
+```jsx
 <li key={0}>1</li>
 <li key={1}>2</li>
 <li key={2}>3</li>
@@ -57,11 +57,11 @@ Keys are taken from each object which is being rendered. There might be a possib
 ## Q: What is `props in React`? 
 A: props stands for properties. Props are arguments passed into React components. props are used in React to pass data from one component to another (from a parent component to a child component(s)). They are useful when you want the flow of data in your app to be dynamic.
 #### Example
-```
+```jsx
 function App() {
   return (
     <div className="App">
-      <Tool name="John Doe" tool="Figma"/> // name and tool are props
+      <Tool name="John Doe" tool="Figma"/> // `name` and `tool` are props
     </div>
   )
 }

@@ -11,6 +11,7 @@
 - What is difference between `React and ReactDOM`?
 - What is difference between `react.development.js` and `react.production.js` files via CDN?
 - What is `async and defer`?
+- Difference b/w `DOMContentLoaded` and `load` event?
 - What is `createRoot`?
 - What is `createElement`?
 
